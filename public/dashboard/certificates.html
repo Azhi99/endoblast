@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="/en/images/favicon.ico">
+    <title>Dashboard - Drash Co.</title>
+</head>
+<body>
+    <div class="container-fluid" id="body" style="display: none;">
+        <div class="row py-1" style="background-color: #1eae98;">
+            <div class="col-12 mb-1">
+                <button class="btn btn-danger btn-block" onclick="logout()"> Logout &nbsp; <i class="fa fa-sign-out"></i> </button>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard" class="text-dark btn btn-light btn-block"> Emails &nbsp; <i class="fa fa-envelope"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/aboutus" class="text-dark btn btn-light btn-block"> About Us &nbsp; <i class="fa fa-address-card"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/contactus" class="text-dark btn btn-light btn-block"> Contact Us &nbsp; <i class="fa fa-phone"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="javascript:void(0)" class="text-light btn btn-primary btn-block"> Certificates &nbsp; <i class="fa fa-certificate"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/services" class="text-dark btn btn-light btn-block"> Services &nbsp; <i class="fa fa-server"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/users" class="text-dark btn btn-light btn-block"> Users &nbsp; <i class="fa fa-users"></i> </a>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-xl-10 col-md-10 col-sm-12 mb-2">
+                <input type="file" class="form-control" accept="image/*" id="imageFile">
+            </div>
+            <div class="col-xl-2 col-md-2 col-sm-12 mb-2">
+                <button class="btn btn-primary btn-block" onclick="upload()"> Upload &nbsp; <i class="fa fa-upload"></i> </button>
+            </div>
+            
+        </div>
+        <div class="row mt-2" id="images">
+            
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="text/javascript">
+    
+        function logout() {
+            const c = confirm('Are you sure logout ?');
+            if(c) {
+                localStorage.removeItem('drashToken');
+                location.href = '/en/';
+            }
+        }
+
+        function getData() {
+            axios.get('/certificates/getData').then(({data}) => {
+                data.forEach(image => {
+                    var name = image.image_path.split('/')[2];
+                    const img = document.createElement('div');
+                    
+                    img.classList.add('col-xl-6');
+                    img.classList.add('col-md-6');
+                    img.classList.add('col-sm-12');
+                    img.style.setProperty('background-image', "url('/certificates/images/"+name+"')");
+                    img.style.setProperty('background-size', 'contain');
+                    img.style.setProperty('background-repeat', 'no-repeat');
+                    img.style.setProperty('min-height', '250px');
+                    img.setAttribute('id', 'image' + image.c_id);
+                    
+                    const btn = document.createElement('button');
+                    const i = document.createElement('i');
+                    i.classList.add('fa');
+                    i.classList.add('fa-trash');
+                    btn.append(i);
+                    btn.classList.add('btn');
+                    btn.classList.add('btn-danger');
+                    btn.classList.add('btn-sm');
+                    btn.setAttribute('onclick', "deleteImage("+ image.c_id +")");
+                    img.append(btn);
+
+                    $("#images").append(img);
+                });
+            });
+        }
+
+        function deleteImage(c_id) {
+            const c = confirm("Are you sure delete this image ?");
+            if(c) {
+                axios.delete('/certificates/deleteCertificate/' + c_id).then(() => {
+                    document.getElementById('image' + c_id).remove();
+                });
+            }
+        }
+
+        function upload() {
+            const file = document.getElementById('imageFile').files[0];
+            if(file) {
+                var f = new FormData();
+                f.append('certificateImage', file);
+                axios.post('/certificates/addCertificate', f).then(() => {
+                    window.location.reload();
+                });
+            } else {
+                alert('Please select a file');
+            }
+        }
+
+        $(document).ready(() => {
+            axios.defaults.headers.common['authorization'] = 'Bearer' + ' ' + localStorage.getItem('drashToken');
+            axios.get('/isLogged').then(() => {
+                document.getElementById('body').style.display='block';
+                getData();
+            }).catch(() => {
+                location.href = '/404Notfound.html';
+            });
+        });
+    </script>
+
+</body>
+</html>

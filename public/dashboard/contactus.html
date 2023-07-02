@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="/en/images/favicon.ico">
+    <title>Dashboard - Drash Co.</title>
+</head>
+<body>
+    <div class="container-fluid" id="body" style="display: none;">
+        <div class="row py-1" style="background-color: #1eae98;">
+            <div class="col-12 mb-1">
+                <button class="btn btn-danger btn-block" onclick="logout()"> Logout &nbsp; <i class="fa fa-sign-out"></i> </button>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/" class="text-dark btn btn-light btn-block"> Emails &nbsp; <i class="fa fa-envelope"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/aboutus" class="text-dark btn btn-light btn-block"> About Us &nbsp; <i class="fa fa-address-card"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="javascript:void(0)" class="text-light btn btn-primary btn-block"> Contact Us &nbsp; <i class="fa fa-phone"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/certificates" class="text-dark btn btn-light btn-block"> Certificates &nbsp; <i class="fa fa-certificate"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/services" class="text-dark btn btn-light btn-block"> Services &nbsp; <i class="fa fa-server"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/users" class="text-dark btn btn-light btn-block"> Users &nbsp; <i class="fa fa-users"></i> </a>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-xl-1 col-md-1 col-sm-12 mb-2">
+                <label class="mt-1"> Phones: </label>
+            </div>
+            <div class="col-xl-11 col-md-11 col-sm-12 mb-2">
+                <input type="text" class="form-control" id="phones">
+            </div>
+
+            <div class="col-xl-1 col-md-1 col-sm-12 mb-2">
+                <label class="mt-1"> Address: </label>
+            </div>
+            <div class="col-xl-11 col-md-11 col-sm-12 mb-2">
+                <input type="text" class="form-control" id="address">
+            </div>
+
+            <div class="col-xl-1 col-md-1 col-sm-12 mb-2">
+                <label class="mt-1"> E-Mail: </label>
+            </div>
+            <div class="col-xl-11 col-md-11 col-sm-12 mb-2">
+                <input type="email" class="form-control" id="email">
+            </div>
+
+            <div class="col-xl-1 col-md-1 col-sm-12 mb-2">
+                <label class="mt-1"> Facebook: </label>
+            </div>
+            <div class="col-xl-11 col-md-11 col-sm-12 mb-2">
+                <input type="text" class="form-control" id="fb_link">
+            </div>
+
+            <div class="col-xl-1 col-md-1 col-sm-12 mb-2">
+                <label class="mt-1"> Instagram: </label>
+            </div>
+            <div class="col-xl-11 col-md-11 col-sm-12 mb-2">
+                <input type="text" class="form-control" id="insta_link">
+            </div>
+            
+            <div class="col-12 mb-2">
+                <button class="btn btn-primary btn-block" id="btnSave" onclick="saveChanges()"> Save changes &nbsp; <i class="fa fa-save"></i> </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="text/javascript">
+
+        function logout() {
+            const c = confirm('Are you sure logout ?');
+            if(c) {
+                localStorage.removeItem('drashToken');
+                location.href = '/en/';
+            }
+        }
+
+        function getData() {
+            axios.get('/contactUs/getContact').then(({data}) => {
+                $("#phones").val(data.phones);
+                $("#address").val(data.address);
+                $("#email").val(data.email);
+                $("#fb_link").val(data.fb_link);
+                $("#insta_link").val(data.insta_link);
+            });
+        }
+
+        function saveChanges() {
+            const phones = $("#phones").val();
+            const address = $("#address").val();
+            const email = $("#email").val();
+            const fb_link = $("#fb_link").val();
+            const insta_link = $("#insta_link").val();
+
+            if(phones && address && email) {
+                document.getElementById('btnSave').setAttribute('disabled', 'disabled');
+                axios.patch('/contactUs/updateContact/1', {
+                    phones,
+                    address,
+                    email,
+                    fb_link,
+                    insta_link
+                }).then(() => {
+                    alert("Successfully updated");
+                }).finally(() => {
+                    document.getElementById('btnSave').removeAttribute('disabled');
+                });
+            } else {
+                alert("Fill phones, address and email");
+            }
+        }
+
+        $(document).ready(() => {
+            axios.defaults.headers.common['authorization'] = 'Bearer' + ' ' + localStorage.getItem('drashToken');
+            axios.get('/isLogged').then(() => {
+                document.getElementById('body').style.display='block';
+                getData();
+            }).catch(() => {
+                location.href = '/404Notfound.html';
+            });
+        });
+
+    </script>
+
+</body>
+</html>

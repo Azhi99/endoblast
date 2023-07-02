@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="/en/images/favicon.ico">
+    <title>Dashboard - Drash Co.</title>
+</head>
+<body>
+    <div class="container-fluid" id="body" style="display: none;">
+        <div class="row py-1" style="background-color: #1eae98;">
+            <div class="col-12 mb-1">
+                <button class="btn btn-danger btn-block" onclick="logout()"> Logout &nbsp; <i class="fa fa-sign-out"></i> </button>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard" class="text-dark btn btn-light btn-block"> Emails &nbsp; <i class="fa fa-envelope"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/aboutus" class="text-dark btn btn-light btn-block"> About Us &nbsp; <i class="fa fa-address-card"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/contactus" class="text-dark btn btn-light btn-block"> Contact Us &nbsp; <i class="fa fa-phone"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/certificates" class="text-dark btn btn-light btn-block"> Certificates &nbsp; <i class="fa fa-certificate"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/services" class="text-dark btn btn-light btn-block"> Services &nbsp; <i class="fa fa-server"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="javascript:void(0)" class="text-white btn btn-primary btn-block"> Users &nbsp; <i class="fa fa-users"></i> </a>
+            </div>
+        </div>
+        <div class="row mt-2 px-3">
+            <div class="col-12">
+                <button class="btn btn-success btn-block" onclick="clearInformations()" data-toggle="modal" data-target="#mdl_user"> Add new &nbsp; <i class="fa fa-plus"></i> </button>
+            </div>
+            
+            <table class="table table-striped table-bordered text-center text-dark mt-1">
+                <thead>
+                    <th class="text-center" style="width: 10%;"> # </th>
+                    <th class="text-center"> Username </th>
+                    <th class="text-center" style="width: 10%;"> Status </th>
+                    <th class="text-center" style="width: 10%;"> Edit </th>
+                    <th class="text-center" style="width: 10%;"> Delete </th>
+                </thead>
+                <tbody id="table-users">
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" id="mdl_user">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span> User detail </span>
+                    <button class="btn btn-danger" onclick="clearInformations()" data-dismiss="modal"> &times; </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-primary text-center" id="loading" style="display: none;">
+                        Loading...
+                    </div>
+                    <div class="row" id="informations">
+                        <div class="col-12">
+                            <label class="mt-2"> ID: <span id="u_id">0</span> </label>
+                        </div>
+    
+                        <div class="col-xl-2 col-md-2 col-sm-12 mb-1">
+                            <label class="mt-2"> Username: </label>
+                        </div>
+                        <div class="col-xl-10 col-md-10 col-sm-12 mb-1">
+                            <input type="text" class="form-control" id="username">
+                        </div>
+
+                        <div class="col-xl-2 col-md-2 col-sm-12 mb-1">
+                            <label class="mt-2"> Password: </label>
+                        </div>
+                        <div class="col-xl-10 col-md-10 col-sm-12 mb-1">
+                            <input type="text" class="form-control" id="password">
+                        </div>
+
+                        <div class="col-xl-4 col-md-4 col-sm-12 mb-1">
+                            <button class="btn btn-success btn-block" onclick="addUser()" id="btn-add"> Add &nbsp; <i class="fa fa-plus"></i> </button>
+                        </div>
+                        <div class="col-xl-4 col-md-4 col-sm-12 mb-1">
+                            <button class="btn btn-warning btn-block text-white" onclick="updateUsername()" id="btn-update-username"> Update username &nbsp; <i class="fa fa-save"></i> </button>
+                        </div>
+                        <div class="col-xl-4 col-md-4 col-sm-12 mb-1">
+                            <button class="btn btn-primary btn-block" onclick="updatePassword()" id="btn-update-password"> Update Password &nbsp; <i class="fa fa-sync"></i> </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script type="text/javascript">
+    
+        function logout() {
+            const c = confirm('Are you sure logout ?');
+            if(c) {
+                localStorage.removeItem('drashToken');
+                location.href = '/en/';
+            }
+        }
+
+        function clearInformations() {
+            $("#u_id").html(null);
+            $("#username").val(null);
+            $("#password").val(null);
+        }
+
+        function getData() {
+            axios.get('/users/getData').then(({data}) => {
+                data.forEach(user => {
+                    $("#table-users").append(`
+                        <tr id="user${user.u_id}">
+                            <td> ${user.u_id} </td>
+                            <td> ${user.username} </td>
+                            <td>
+                                ${user.status == 1 ? `<button class="btn btn-success btn-sm" onclick="deactiveUser(${user.u_id})"> <i class="fa fa-unlock"></i> </button>` : `<button class="btn btn-danger btn-sm" onclick="activeUser(${user.u_id})"> <i class="fa fa-lock"></i> </button>`}
+                            </td>
+                            <td> 
+                                <button class="btn btn-primary btn-sm" onclick="viewUser(${user.u_id})" data-toggle="modal" data-target="#mdl_user"> <i class="fa fa-eye"></i> </button> 
+                            </td>
+                            <td>
+                            <button class="btn btn-danger btn-sm" onclick="deleteUser(${user.u_id})"> <i class="fa fa-trash"></i> </button> 
+                            </td>
+                        </tr>
+                    `);
+                });
+            });
+        }
+
+        function viewUser(u_id) {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('informations').style.display = 'none';
+            axios.get('/users/getSingleUser/' + u_id).then(({data}) => {
+                $("#u_id").html(data.u_id);
+                $("#username").val(data.username);
+            }).finally(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('informations').style.display = 'flex';
+            });
+        }
+
+        function addUser() {
+            const username = $("#username").val();
+            const password = $("#password").val();
+            if(username && password) {
+                document.getElementById('btn-add').setAttribute('disabled', 'disabled');
+                axios.post('/users/addUser', {
+                    username,
+                    password
+                }).then(() => {
+                    window.location.reload();
+                }).finally(() => {
+                    document.getElementById('btn-add').removeAttribute('disabled');
+                });
+            } else {
+                alert('Fill all informations');
+            }
+        }
+
+        function updateUsername() {
+            const u_id = $("#u_id").html();
+            if(u_id) {
+                const username = $("#username").val();
+                if(username) {
+                    document.getElementById('btn-update-username').setAttribute('disabled', 'disabled');
+                    axios.patch('/users/updateUser/' + u_id, {
+                        username
+                    }).then(() => {
+                        alert('Success');
+                        window.location.reload();
+                    }).finally(() => {
+                        document.getElementById('btn-update-username').removeAttribute('disabled');
+                    });
+                } else {
+                    alert('Fill username');
+                }
+            } else {
+                alert('Select a user');
+            }
+        }
+
+        function updatePassword() {
+            const u_id = $("#u_id").html();
+            if(u_id) {
+                const password = $("#password").val();
+                if(password) {
+                    document.getElementById('btn-update-password').setAttribute('disabled', 'disabled');
+                    axios.patch('/users/updatePassword/' + u_id, {
+                        password
+                    }).then(() => {
+                        alert('Success');
+                        window.location.reload();
+                    }).finally(() => {
+                        document.getElementById('btn-update-password').removeAttribute('disabled');
+                    });
+                } else {
+                    alert('Fill password');
+                }
+            } else {
+                alert('Select a user');
+            }
+        }
+
+        function activeUser(u_id) {
+            const c = confirm('Are you sure active this user ?');
+            if(c) {
+                axios.patch('/users/activeUser/' + u_id).then(() => {
+                    alert('Success');
+                    window.location.reload();
+                });
+            }
+        }
+
+        function deactiveUser(u_id) {
+            const c = confirm('Are you sure deactive this user ?');
+            if(c) {
+                axios.patch('/users/deactiveUser/' + u_id).then(() => {
+                    alert('Success');
+                    window.location.reload();
+                }).catch((err) => {
+                    alert(err.response.data.message);
+                });
+            }
+        }
+
+        function deleteUser(u_id) {
+            const c = confirm('Are you sure delete this user ?');
+            if(c) {
+                axios.delete('/users/deleteUser/' + u_id).then(() => {
+                    document.getElementById('user' + u_id).remove();
+                }).catch((err) => {
+                    alert(err.response.data.message);
+                });
+            }
+        }
+
+        $(document).ready(() => {
+            axios.defaults.headers.common['authorization'] = 'Bearer' + ' ' + localStorage.getItem('drashToken');
+            axios.get('/isLogged').then(() => {
+                document.getElementById('body').style.display='block';
+                getData();
+            }).catch(() => {
+                location.href = '/404Notfound.html';
+            });
+        });
+    </script>
+
+</body>
+</html>

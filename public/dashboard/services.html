@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="/en/images/favicon.ico">
+    <title>Dashboard - Drash Co.</title>
+</head>
+<body>
+    <div class="container-fluid" id="body" style="display: none;">
+        <div class="row py-1" style="background-color: #1eae98;">
+            <div class="col-12 mb-1">
+                <button class="btn btn-danger btn-block" onclick="logout()"> Logout &nbsp; <i class="fa fa-sign-out"></i> </button>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard" class="text-dark btn btn-light btn-block"> Emails &nbsp; <i class="fa fa-envelope"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/aboutus" class="text-dark btn btn-light btn-block"> About Us &nbsp; <i class="fa fa-address-card"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/contactus" class="text-dark btn btn-light btn-block"> Contact Us &nbsp; <i class="fa fa-phone"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/certificates" class="text-dark btn btn-light btn-block"> Certificates &nbsp; <i class="fa fa-certificate"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="javascript:void(0)" class="text-white btn btn-primary btn-block"> Services &nbsp; <i class="fa fa-server"></i> </a>
+            </div>
+            <div class="col-xl-2 col-md-3 col-sm-4 mb-1">
+                <a href="/dr0a1sh/dashboard/users" class="text-dark btn btn-light btn-block"> Users &nbsp; <i class="fa fa-users"></i> </a>
+            </div>
+        </div>
+        <div class="row mt-2 px-3">
+            <div class="col-12">
+                <button class="btn btn-success btn-block" onclick="clearInformations()" data-toggle="modal" data-target="#mdl_service"> Add new &nbsp; <i class="fa fa-plus"></i> </button>
+            </div>
+            
+            <table class="table table-striped table-bordered text-center text-dark mt-1">
+                <thead>
+                    <th class="text-center" style="width: 10%;"> # </th>
+                    <th class="text-center"> Title (EN) </th>
+                    <th class="text-center"> Image </th>
+                    <th class="text-center" style="width: 6%;"> View </th>
+                    <th class="text-center" style="width: 6%;"> Delete </th>
+                </thead>
+                <tbody id="table-services">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" id="mdl_service">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span> Service detail </span>
+                    <button class="btn btn-danger" data-dismiss="modal" onclick="clearInformations()"> &times; </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-primary text-center" id="loading" style="display: none;">
+                        Loading...
+                    </div>
+                    <div class="row" id="informations">
+                        <div class="col-12">
+                            <label class="mt-2"> ID: <span id="s_id">0</span> </label>
+                        </div>
+    
+                        <div class="col-xl-2 col-md-2 col-sm-12 mb-1">
+                            <label class="mt-2"> Title English: </label>
+                        </div>
+                        <div class="col-xl-10 col-md-10 col-sm-12 mb-1">
+                            <input type="text" class="form-control" id="title_en">
+                        </div>
+
+                        <div class="col-xl-2 col-md-2 col-sm-12 mb-1">
+                            <label class="mt-2"> Title Arabic: </label>
+                        </div>
+                        <div class="col-xl-10 col-md-10 col-sm-12 mb-1">
+                            <input type="text" class="form-control" id="title_ar">
+                        </div>
+
+                        <div class="col-xl-2 col-md-2 col-sm-12 mb-1">
+                            <label class="mt-2"> Title Kurdish: </label>
+                        </div>
+                        <div class="col-xl-10 col-md-10 col-sm-12 mb-1">
+                            <input type="text" class="form-control" id="title_ku">
+                        </div>
+
+                        <div class="col-xl-2 col-md-2 col-sm-12 mb-1">
+                            <label class="mt-2"> Description English: </label>
+                        </div>
+                        <div class="col-xl-10 col-md-10 col-sm-12 mb-1">
+                            <textarea cols="30" rows="5" class="form-control" style="resize: none;" id="desc_en"></textarea>
+                        </div>
+
+                        <div class="col-xl-2 col-md-2 col-sm-12 mb-1">
+                            <label class="mt-2"> Description Arabic: </label>
+                        </div>
+                        <div class="col-xl-10 col-md-10 col-sm-12 mb-1">
+                            <textarea cols="30" rows="5" class="form-control" style="resize: none;" id="desc_ar"></textarea>
+                        </div>
+
+                        <div class="col-xl-2 col-md-2 col-sm-12 mb-1">
+                            <label class="mt-2"> Description Kurdish: </label>
+                        </div>
+                        <div class="col-xl-10 col-md-10 col-sm-12 mb-1">
+                            <textarea cols="30" rows="5" class="form-control" style="resize: none;" id="desc_ku"></textarea>
+                        </div>
+
+                        <div class="col-xl-2 col-md-2 col-sm-12 mb-1">
+                            <label class="mt-2"> Image: </label>
+                        </div>
+                        <div class="col-xl-10 col-md-10 col-sm-12 mb-1">
+                            <input type="file" class="form-control" id="imageFile">
+                        </div>
+
+                        <div class="col-xl-4 col-md-4 col-sm-12 mb-1">
+                            <button class="btn btn-success btn-block" onclick="addService()" id="btn-add"> Add &nbsp; <i class="fa fa-plus"></i> </button>
+                        </div>
+                        <div class="col-xl-4 col-md-4 col-sm-12 mb-1">
+                            <button class="btn btn-warning btn-block text-white" onclick="updateService()" id="btn-update"> Save changes &nbsp; <i class="fa fa-save"></i> </button>
+                        </div>
+                        <div class="col-xl-4 col-md-4 col-sm-12 mb-1">
+                            <button class="btn btn-primary btn-block" onclick="updateImage()" id="btn-update-image"> Update Image &nbsp; <i class="fa fa-upload"></i> </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="text/javascript">
+
+        function logout() {
+            const c = confirm('Are you sure logout ?');
+            if(c) {
+                localStorage.removeItem('drashToken');
+                location.href = '/en/';
+            }
+        }
+
+        function clearInformations() {
+            $("#s_id").text(null);
+            $("#title_en").val(null);
+            $("#title_ar").val(null);
+            $("#title_ku").val(null);
+            $("#desc_en").val(null);
+            $("#desc_ar").val(null);
+            $("#desc_ku").val(null);
+        }
+
+        function getData() {
+            axios.get('/services/getServices/en').then(({data}) => {
+                data.forEach(service => {
+                    const tr = document.createElement('tr');
+                    tr.setAttribute('id', 'service' + service.s_id);
+
+                    const td_id = document.createElement('td');
+                    td_id.append(document.createTextNode(service.s_id));
+
+                    const td_title = document.createElement('td');
+                    td_title.append(document.createTextNode(service.title_en));
+
+                    const td_image = document.createElement('td');
+                    const image = document.createElement('img');
+                    image.setAttribute('src', '/services/images/' + service.image_path.split('/')[2]);
+                    image.style.setProperty('width', '300px');
+                    image.style.setProperty('height', '225px');
+                    td_image.append(image);
+
+                    const td_view = document.createElement('td');
+                    const btnView = document.createElement('button');
+                    btnView.classList.add('btn');
+                    btnView.classList.add('btn-primary');
+                    btnView.classList.add('btn-sm');
+                    btnView.setAttribute('onclick', "viewService(" + service.s_id + ")");
+                    btnView.setAttribute('data-toggle', 'modal');
+                    btnView.setAttribute('data-target', '#mdl_service');
+                    const i = document.createElement('i');
+                    i.classList.add('fa');
+                    i.classList.add('fa-eye');
+                    btnView.append(i);
+                    td_view.append(btnView);
+
+                    const td_delete = document.createElement('td');
+                    const btnDelete = document.createElement('button');
+                    btnDelete.classList.add('btn');
+                    btnDelete.classList.add('btn-danger');
+                    btnDelete.classList.add('btn-sm');
+                    btnDelete.setAttribute('onclick', "deleteService(" + service.s_id + ")");
+                    const i2 = document.createElement('i');
+                    i2.classList.add('fa');
+                    i2.classList.add('fa-trash');
+                    btnDelete.append(i2);
+                    td_delete.append(btnDelete);
+                    
+                    tr.append(td_id);
+                    tr.append(td_title);
+                    tr.append(td_image);
+                    tr.append(td_view);
+                    tr.append(td_delete);
+
+                    document.getElementById('table-services').append(tr);
+                });
+            });
+        }
+
+        function viewService(s_id) {
+            document.getElementById('loading').style.display = 'block';
+            axios.get('/services/getOneService/' + s_id).then(({data}) => {
+                $("#s_id").text(data.s_id);
+                $("#title_en").val(data.title_en);
+                $("#title_ar").val(data.title_ar);
+                $("#title_ku").val(data.title_ku);
+                $("#desc_en").val(data.desc_en);
+                $("#desc_ar").val(data.desc_ar);
+                $("#desc_ku").val(data.desc_ku);
+            }).finally(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('informations').style.display = 'flex';
+            });
+        }
+
+        function deleteService(s_id) {
+            const c = confirm('Are you sure delete this service ?');
+            if(c) {
+                axios.delete('/services/deleteService/' + s_id).then(() => {
+                    document.getElementById('service' + s_id).remove();
+                });
+            }
+        }
+
+        function addService() {
+            const title_en = $("#title_en").val();
+            const title_ar = $("#title_ar").val();
+            const title_ku = $("#title_ku").val();
+            const desc_en = $("#desc_en").val();
+            const desc_ar = $("#desc_ar").val();
+            const desc_ku = $("#desc_ku").val();
+            const file = document.getElementById('imageFile').files[0];
+
+            if(title_en && title_ar && title_ku && desc_en && desc_ar && desc_ku && file) {
+                var f = new FormData();
+                f.append('title_en', title_en);
+                f.append('title_ar', title_ar);
+                f.append('title_ku', title_ku);
+                f.append('desc_en', desc_en);
+                f.append('desc_ar', desc_ar);
+                f.append('desc_ku', desc_ku);
+                f.append('serviceImage', file);
+                
+                document.getElementById('btn-add').setAttribute('disabled', 'disabled');
+                axios.post('/services/addService', f).then(() => {
+                    alert('Success');
+                    window.location.reload();
+                });
+
+            } else {
+                alert("Fill all informations and select an image");
+            }
+
+        }
+
+        function updateService() {
+            const s_id = $("#s_id").html();
+            if(s_id) {
+                const title_en = $("#title_en").val();
+                const title_ar = $("#title_ar").val();
+                const title_ku = $("#title_ku").val();
+                const desc_en = $("#desc_en").val();
+                const desc_ar = $("#desc_ar").val();
+                const desc_ku = $("#desc_ku").val();
+
+                if(title_en && title_ar && title_ku && desc_en && desc_ar && desc_ku) {
+                    document.getElementById('btn-update').setAttribute('disabled', 'disabled');
+                    axios.patch('/services/updateService/' + s_id, {
+                        title_en,
+                        title_ar,
+                        title_ku,
+                        desc_en,
+                        desc_ar,
+                        desc_ku
+                    }).then(() => {
+                        window.location.reload();
+                    }).finally(() => {
+                        document.getElementById('btn-update').removeAttribute('disabled');
+                    });
+                } else {
+                    alert('Fill all informations');
+                }
+
+            } else {
+                alert('Select a service');
+            }
+        }
+
+        function updateImage() {
+            const s_id = $("#s_id").html();
+            if(s_id) {
+                const file = document.getElementById('imageFile').files[0];
+                if(file) {
+                    const f = new FormData();
+                    f.append('serviceImage', file);
+                    document.getElementById('btn-update-image').setAttribute('disabled', 'disabled');
+                    axios.patch('/services/updateImage/' + s_id, f).then(() => {
+                        window.location.reload();
+                    }).finally(() => {
+                        document.getElementById('btn-update-image').removeAttribute('disabled');
+                    });
+                } else {
+                    alert('Select an image');
+                }
+            } else {
+                alert('Select a service');
+            }
+        }
+
+        $(document).ready(() => {
+            axios.defaults.headers.common['authorization'] = 'Bearer' + ' ' + localStorage.getItem('drashToken');
+            axios.get('/isLogged').then(() => {
+                document.getElementById('body').style.display='block';
+                getData();
+            }).catch(() => {
+                location.href = '/404Notfound.html';
+            });
+        });
+    </script>
+
+</body>
+</html>

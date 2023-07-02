@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="/en/images/favicon.ico">
+    <title>Login - Drash Co.</title>
+</head>
+<body>
+
+    <div class="container" id="body" style="display: none;">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-xl-6">
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body p-0">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4" style="margin-left: -60px !important;">
+                                    <img src="/en/images/logo.png" alt="" width="120" height="120">
+                                    Drash - LTD
+                                </h4>
+                            </div>
+                            <div class="form-group"><input class="form-control form-control-user" type="text" id="username" placeholder="Username" name="email"></div>
+                            <div class="form-group"><input class="form-control form-control-user" type="password" id="password" placeholder="Password" name="password"> </div>
+                            <button class="btn btn-success btn-block text-white btn-user" id="btn_login" onclick="login()" >Login</button>
+                            <hr>
+                            <div class="text-center">
+                                Developed by: &nbsp;
+                                <a href="https://www.facebook.com/SulyTech19" target="_blank"> Suly Tech </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script type="text/javascript">
+
+        function login() {
+            const username = $("#username").val();
+            const password = $("#password").val();
+            if(username && password) {
+                document.getElementById('btn_login').setAttribute('disabled', 'disabled');
+                axios.post('/login', {
+                    username,
+                    password
+                }).then(({data}) => {
+                    localStorage.setItem('drashToken', data.token);
+                    location.href = '/dr0a1sh/dashboard/';
+                }).catch((err) => {
+                    alert(err.response.data.message);
+                }).finally(() => {
+                    document.getElementById('btn_login').removeAttribute('disabled');
+                });
+            } else {
+                alert("Fill username and password");
+            }
+        }
+
+        $(document).ready(() => {
+            axios.defaults.headers.common['authorization'] = 'Bearer' + ' ' + localStorage.getItem('drashToken');
+            axios.get('/isLogged').then(() => {
+                location.href = '/dr0a1sh/dashboard';
+            }).catch(() => {
+                document.getElementById('body').style.display = 'block';
+            });
+        });
+
+    </script>
+
+</body>
+</html>

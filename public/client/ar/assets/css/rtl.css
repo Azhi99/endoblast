@@ -1,0 +1,627 @@
+@font-face {
+  font-family: nrt;
+  src: url('/ku/fonts/NRT-Reg.ttf');
+}
+
+* {
+  font-family: nrt !important;
+}
+
+.top-header .header-right-content {
+  float: left;
+}
+
+.top-header .header-right-content .languages-switcher {
+  margin-right: 0;
+  margin-left: 0;
+  padding-left: 0;
+  padding-right: 25px;
+}
+
+.top-header .header-right-content .languages-switcher i {
+  left: auto;
+  right: 0;
+}
+
+.top-header .header-right-content .my-account {
+  margin-right: 0;
+  margin-left: 30px;
+}
+
+.top-header .header-left-content li {
+  margin-right: 0;
+  margin-left: 15px;
+}
+
+.top-header .header-left-content li:last-child {
+  margin-left: 0;
+}
+
+.navbar-area .navbar-brand {
+  margin-left: 0;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item .dropdown-menu li a i {
+  float: left;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
+  left: auto;
+  right: 250px;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item:last-child a {
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+.desktop-nav .navbar .navbar-nav .nav-item:first-child a {
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+.desktop-nav .navbar .others-options ul li {
+  margin-right: 0;
+  margin-left: 15px;
+}
+
+.desktop-nav .navbar .others-options ul li:last-child {
+  margin-left: 0;
+}
+
+.desktop-nav .navbar .others-options ul li .option-item .search-overlay.search-popup {
+  right: auto;
+  left: 0;
+}
+
+.desktop-nav .navbar .others-options ul li .option-item .search-overlay.search-popup .search-form .search-input {
+  padding-left: 0;
+  padding-right: 15px;
+}
+
+.desktop-nav .navbar .others-options ul li .option-item .search-overlay.search-popup .search-form .search-button {
+  right: auto;
+  left: 0;
+}
+
+.desktop-nav .navbar .others-options ul li .default-btn span {
+  padding-left: 0;
+  padding-right: 28px;
+}
+
+.desktop-nav .navbar .others-options ul li .default-btn span i {
+  left: auto;
+  right: 0;
+}
+
+.banner-area {
+  background-position: left;
+}
+
+.banner-area .shape.shape-1 {
+  left: auto;
+  right: 0;
+}
+
+.default-btn span {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.default-btn span i {
+  left: auto;
+  right: 0;
+  display: none;
+}
+
+.about-year-content {
+  margin-left: 0;
+  margin-right: 30px;
+}
+
+.about-year-content h3 {
+  left: auto;
+  right: 20px;
+}
+
+.choose-us-img .choose-us-shape-1 {
+  left: auto;
+  right: 0;
+}
+
+.choose-us-img .choose-us-shape-2 {
+  left: auto;
+  right: 0;
+}
+
+.logistics-solutions ul {
+  margin-right: 0;
+  margin-left: -100px;
+  padding-right: 0;
+  padding-left: 30px;
+}
+
+.logistics-solutions ul li {
+  padding-left: 0;
+  padding-right: 135px;
+}
+
+.logistics-solutions ul li i {
+  left: auto;
+  right: 20px;
+}
+
+.single-counter i {
+  left: auto;
+  right: 20px;
+}
+
+.single-counter::before {
+  left: auto;
+  right: 0;
+  top: -18px;
+}
+
+.single-counter .count-title {
+  margin-left: 0;
+  margin-right: 100px;
+}
+
+.single-counter .count-title .target {
+  margin-left: 0;
+  margin-right: -15px;
+  top: 5px;
+}
+
+.request-quote-content .request-quote-from {
+  margin-left: 0;
+  margin-right: -150px;
+  padding-right: 30px;
+  padding-left: 0;
+}
+
+.request-quote-content .request-quote-from .default-btn span i {
+  display: none;
+}
+
+.single-check {
+  padding-left: 0;
+  padding-right: 20px;
+}
+
+.single-check .checkmark {
+  left: auto;
+  right: 0;
+}
+
+.single-team-member .team-content .team-social ul {
+  left: auto;
+  right: 20px;
+}
+
+.single-team-member .team-content .team-social .control {
+  left: auto;
+  right: 20px;
+}
+
+.testimonials-img .testimonials-title {
+  right: auto;
+  left: -30px;
+}
+
+.single-blog-box ul li {
+  border-right: none;
+  border-left: 1px solid #1f2428;
+  margin-right: 0;
+  margin-left: 8px;
+  padding-right: 0;
+  padding-left: 10px;
+}
+
+.single-blog-box ul li:last-child {
+  border-right: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.read-more i {
+  top: 3px;
+}
+
+[type=email], [type=number], [type=tel], [type=url] {
+  direction: unset;
+}
+
+.single-footer-widget .address li {
+  padding-left: 0;
+  padding-right: 100px;
+}
+
+.single-footer-widget .address li span {
+  left: auto;
+  right: 0;
+}
+
+.single-footer-widget .address li span i {
+  display: none;
+}
+
+.faq-accordion .accordion .accordion-title i {
+  right: auto;
+  left: 0;
+}
+
+.choose-img .your-of {
+  right: auto;
+  left: 0;
+}
+
+.services-area.services-area-style-two .single-services-box {
+  text-align: right;
+}
+
+.logistics-solutions-area.logistics-solutions-area-style-two .logistics-solutions ul {
+  margin-left: 0;
+}
+
+.single-testimonials-box .testimonials-img .testimonials-mane {
+  left: auto;
+  right: 130px;
+}
+
+.single-testimonials-box ul {
+  right: auto;
+  left: 30px;
+}
+
+.request-quote-area.request-quote-area-style-two .request-quote-content .request-quote-from {
+  margin-right: 0;
+}
+
+.banner-area.banner-area-style-three {
+  background-position: left;
+}
+
+.services-area.services-area-style-three .single-services-box {
+  text-align: center !important;
+}
+
+.logistics-solutions-area.logistics-solutions-area-style-three .logistics-solutions ul li {
+  padding-left: 0;
+  padding-right: 95px;
+}
+
+.page-title-area .page-title-content ul {
+  padding-right: 0;
+}
+
+.page-title-area .page-title-content ul li {
+  margin-left: 0;
+  padding-right: 0;
+  margin-right: 15px;
+  padding-left: 17px;
+}
+
+.page-title-area .page-title-content ul li:first-child {
+  margin-right: 0;
+}
+
+.page-title-area .page-title-content ul li:last-child {
+  padding-left: 0;
+}
+
+.page-title-area .page-title-content ul li::before {
+  right: auto;
+  left: 0;
+}
+
+.page-title-area .shape.shape-1 {
+  left: auto;
+  right: 0;
+}
+
+.page-title-area .shape.shape-2 {
+  left: 0;
+  right: auto;
+}
+
+.user-area .user-form-content .user-form .login-action .forgot-login {
+  float: left;
+}
+
+.coming-soon-content .newsletter-form button {
+  right: auto;
+  left: 0;
+}
+
+.coming-soon-content .newsletter-form .input-newsletter {
+  padding-left: 0;
+  padding-right: 15px;
+}
+
+.coming-soon-content #timer div::before, .coming-soon-content #timer div::after {
+  right: auto;
+  left: -9px;
+}
+
+.sidebar-widget.search .search-form .search-button {
+  right: auto;
+  left: 2px;
+}
+
+.sidebar-widget.sidebar-widget.categories ul li a i {
+  float: left;
+}
+
+.sidebar-widget.recent-post ul li {
+  padding-left: 0;
+  padding-right: 90px;
+}
+
+.sidebar-widget.recent-post ul li a img {
+  left: auto;
+  right: 0;
+}
+
+.blog-details-content.content-2 ul li {
+  padding-right: 0;
+  margin-right: 0;
+  padding-left: 8px;
+  margin-left: 8px;
+  border-right: none;
+  border-left: 1px solid #1f2428;
+}
+
+.blog-details-content.content-2 ul li:last-child {
+  padding-left: 0;
+  margin-left: 0;
+  border-left: none;
+}
+
+.blog-details-content.content-4 blockquote i {
+  left: auto;
+  right: 30px;
+}
+
+.blog-details-content.content-6 .social-icon {
+  float: left;
+}
+
+.blog-details-content.content-6 .social-icon li a {
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+.blog-details-content.content-6 ul li a {
+  margin-left: 0;
+  margin-right: 15px;
+}
+
+.blog-details-content.content-7 {
+  padding-left: 30px;
+  padding-right: 160px;
+}
+
+.blog-details-content.content-7 img {
+  left: auto;
+  right: 30px;
+}
+
+.blog-details-content.content-9 .comments ul li {
+  padding-left: 0;
+  padding-right: 100px;
+}
+
+.blog-details-content.content-9 .comments ul li img {
+  left: auto;
+  right: 0;
+}
+
+.single-contact-info i {
+  left: auto;
+  right: 20px;
+}
+
+.single-contact-info::before {
+  left: auto;
+  right: 0;
+}
+
+.single-contact-info .count-title {
+  margin-left: 0;
+  margin-right: 100px;
+}
+
+.main-contact-area .form-group.checkboxs #chb2 {
+  left: auto;
+  right: 0;
+}
+
+.main-contact-area .form-group.checkboxs p {
+  padding-left: 0;
+  padding-right: 20px;
+}
+
+.faq-accordion .accordion {
+  padding-right: 0;
+}
+
+.faq-accordion .accordion .accordion-item {
+  padding-right: 20px;
+  padding-left: 40px;
+}
+
+.faq-accordion .accordion .accordion-title i {
+  right: auto;
+  left: -24px;
+}
+
+.go-top {
+  right: auto;
+  left: 3%;
+}
+
+.go-top.active {
+  right: auto;
+  left: 3%;
+}
+
+.call-now {
+  right: auto;
+  left: 6.8%;
+}
+
+.call-now.active {
+  right: auto;
+  left: 6.8%;
+}
+
+@media only screen and (max-width: 767px) {
+  .logistics-solutions ul {
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .logistics-solutions ul li {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .single-counter .count-title {
+    margin-right: 0;
+  }
+  .request-quote-content .request-quote-from {
+    margin-left: 0;
+    margin-right: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .testimonials-img .testimonials-title {
+    right: auto;
+    left: auto;
+    width: 100%;
+  }
+  .top-header .header-right-content {
+    float: unset;
+  }
+  .about-year-content {
+    margin-right: 0;
+  }
+  .logistics-solutions-area.logistics-solutions-area-style-three .logistics-solutions ul li {
+    padding-right: 0;
+  }
+  .services-details-area .sidebar-widget {
+    margin-right: 0;
+  }
+  .user-area .user-form-content .user-form .login-action .forgot-login {
+    float: unset;
+  }
+  .blog-details-content.content-6 .social-icon {
+    float: unset;
+  }
+  .blog-details-content.content-7 {
+    padding-right: 30px;
+  }
+  .blog-details-content.content-9 .comments ul li {
+    padding-right: 0;
+  }
+  .single-contact-info .count-title {
+    margin-right: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .logistics-solutions ul {
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .logistics-solutions ul li {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .single-counter .count-title {
+    margin-right: 0;
+  }
+  .request-quote-content .request-quote-from {
+    margin-left: 0;
+    margin-right: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .testimonials-img .testimonials-title {
+    right: auto;
+    left: auto;
+    width: 100%;
+  }
+  .about-year-content {
+    margin-right: 0;
+  }
+  .logistics-solutions-area.logistics-solutions-area-style-three .logistics-solutions ul li {
+    padding-right: 0;
+  }
+  .services-details-area .sidebar-widget {
+    margin-right: 0;
+  }
+  .blog-details-content.content-6 .social-icon {
+    float: unset;
+  }
+  .blog-details-content.content-7 {
+    padding-right: 30px;
+  }
+  .single-contact-info .count-title {
+    margin-right: 0;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .about-year-content {
+    margin-right: 0;
+  }
+  .about-year-content h3 {
+    text-align: right;
+  }
+  .testimonials-img .testimonials-title {
+    left: 0;
+    width: 100%;
+  }
+  .blog-details-content.content-4 blockquote i {
+    display: none;
+  }
+  .blog-details-content.content-6 ul li a {
+    margin-left: 0;
+    margin-right: 3px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .mobile-responsive-nav .mean-container a.meanmenu-reveal {
+    right: auto !important;
+    left: 0 !important;
+  }
+  .mobile-responsive-nav .mean-container .mean-nav ul li a {
+    text-align: right;
+    float: right;
+  }
+  .mobile-responsive-nav .mean-container .mean-nav ul li a.mean-expand {
+    text-align: left !important;
+    right: unset;
+    left: 0;
+  }
+  .others-option-for-responsive .dot-menu {
+    right: auto;
+    left: 60px;
+  }
+  .others-option-for-responsive .container .container {
+    right: auto;
+    left: 0;
+  }
+  .others-option-for-responsive .others-option ul li {
+    margin-right: 0;
+    margin-left: 15px;
+  }
+  .others-option-for-responsive .others-option ul li:last-child {
+    margin-left: 0;
+  }
+  .navbar-area::before {
+    display: none;
+  }
+}
+/*# sourceMappingURL=rtl.css.map */
