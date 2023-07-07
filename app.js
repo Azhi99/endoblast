@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public/client'));
 
-app.use('/', enRouter);
+app.use('/en', enRouter);
 app.use('/ku', kuRouter);
 app.use('/ar', arRouter);
 app.use('/users', userRouter);
